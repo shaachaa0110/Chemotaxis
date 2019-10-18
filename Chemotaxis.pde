@@ -21,8 +21,6 @@ Bacteria [] colony;
  	float targetX, targetY, dx, dy, x, y;
  	double followFrac;
  	Bacteria(){
- 		//(int)(Math.random()*500);
- 		//(int)(Math.random()*500);
  		x = (int)(Math.random()*500);
  		y = (int)(Math.random()*500);
  		followFrac = (Math.random()*0.05+0.01);
@@ -41,28 +39,3 @@ Bacteria [] colony;
  		y += dy * followFrac + (int)(Math.random()*3)-1;
  	}
  }    
-
-/*
-float x;
-float y;
-float easing = 0.05;
-
-void setup() {
-  size(640, 360); 
-  noStroke();  
-}
-
-void draw() { 
-  background(51);
-  
-  float targetX = mouseX;
-  float dx = targetX - x;
-  x += dx * easing;
-  
-  float targetY = mouseY;
-  float dy = targetY - y;
-  y += dy * easing;
-  
-  ellipse(x, y, 66, 66);
-}
-*/
