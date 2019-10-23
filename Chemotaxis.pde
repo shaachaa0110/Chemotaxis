@@ -1,6 +1,8 @@
+//find the hive game;
 Bees [] colony;
-Honey [] dots;
+Hive [] home;
 int middle = 250;
+int X_POS, Y_POS, SIZE;
 void setup()   
 {     
  	size(500,500);
@@ -8,9 +10,8 @@ void setup()
  	for(int i = 0; i < colony.length; i++){
  		colony[i] = new Bees();
  	}
- 	dots = new Honey[25];
- 	for(int j = 0; j < dots.length; j++){
- 		dots[j] = new Honey();
+ 	for(int j = 0; j < home.length; j++){
+ 		home[j] = new Hive();
  	}
  }   
  void draw()   
@@ -20,39 +21,27 @@ void setup()
  		colony[i].move();
  		colony[i].show();
  	}
- 	for(int j = 0; j < dots.length; j++){
- 		dots[j].show();
+ 	home.make();
+ 	if(get(mouseX, mouseY) == color(200)){
+ 		home.complete();
  	}
  }  
-/*
- class Honey
+ class Hive
  {
- 	int center, xOne, yOne, xTwo, yTwo, xThree, yThree, myHoneyColor, sizeFrac;
- 	Honey(){
- 		
- 		center = (int)(Math.random()*500);
- 		sizeFrac = 10;
- 		xOne = center;
- 		yOne = center - sizeFrac;
- 		xTwo = center - sizeFrac;
- 		yTwo = center - sizeFrac;
- 		xThree = center + sizeFrac;
- 		yThree = center + sizeFrac;
- 		
- 		xOne = (int)(Math.random()*500);
- 		yOne = (int)(Math.random()*500);
- 		xTwo = (int)(Math.random()*500);
- 		yTwo = (int)(Math.random()*500);
- 		xThree = (int)(Math.random()*500);
- 		yThree = (int)(Math.random()*500);
- 		myHoneyColor = color(175, 175, 0);
+ 	Hive(){
+ 		X_POS = (int)(Math.random()*500);
+ 		Y_POS = (int)(Math.random()*500);
+ 		SIZE = (int)(Math.random()*50+50);
  	}
- 	void show(){
- 		fill(myHoneyColor);
- 		triangle(xOne, yOne, xTwo, yTwo, xThree, yThree);
+ 	void make(){
+ 		fill(200);
+ 		ellipse(X_POS, Y_POS, SIZE, SIZE);
+ 	}
+ 	void complete(){
+ 		fill(0, 255, 0);
+ 		ellipse(X_POS, Y_POS, SIZE, SIZE);
  	}
  }
-*/
  class Bees    
  {     
  	int myColor, dist, yellow;
@@ -74,7 +63,7 @@ void setup()
  		ellipse(x, y-5, 4, 4);
  	}
  	void move(){
- 		followFrac = (Math.random()*0.001+0.01);
+ 		followFrac = (Math.random()*0.03+0.01);
  		quadrant = Math.random();
  		if(quadrant < 0.25){
  			targetX = mouseX - dist;
