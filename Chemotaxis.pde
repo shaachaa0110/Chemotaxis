@@ -1,6 +1,4 @@
-//find the hive game;
 Bees [] colony;
-Hive [] home;
 int middle = 250;
 int X_POS, Y_POS, SIZE;
 void setup()   
@@ -10,9 +8,6 @@ void setup()
  	for(int i = 0; i < colony.length; i++){
  		colony[i] = new Bees();
  	}
- 	for(int j = 0; j < home.length; j++){
- 		home[j] = new Hive();
- 	}
  }   
  void draw()   
  {  
@@ -21,9 +16,10 @@ void setup()
  		colony[i].move();
  		colony[i].show();
  	}
- 	home.make();
- 	if(get(mouseX, mouseY) == color(200)){
- 		home.complete();
+ 	for(int j = 10; j < 500; j+=20){
+ 		for(int k = 10; k < 500; k+= 20){
+ 			ellipse(j, k, 10, 10);
+ 		}
  	}
  }  
  class Hive
